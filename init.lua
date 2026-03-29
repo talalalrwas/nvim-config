@@ -27,6 +27,7 @@ vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { no
 
 vim.pack.add({
     { src = "https://github.com/tomasiser/vim-code-dark" },
+    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/echasnovski/mini.pick" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -38,9 +39,14 @@ vim.pack.add({
     { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
     { src = "https://github.com/hrsh7th/cmp-buffer" },
     { src = "https://github.com/hrsh7th/cmp-path" },
+    { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
 
 require('Comment').setup()
+
+require('render-markdown').setup({
+    completions = { lsp = { enabled = true } },
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
@@ -168,4 +174,4 @@ cmp.setup({
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>p', vim.lsp.buf.hover)
 
-vim.cmd("colorscheme codedark")
+vim.cmd("colorscheme gruber-darker")
